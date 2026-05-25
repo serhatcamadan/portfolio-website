@@ -7,4 +7,5 @@ plugins: [
 react(),
 tailwindcss(),
 ],
+base: '/portfolio-website/',
 })
