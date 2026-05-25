@@ -2,27 +2,27 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const jobs = [
   {
-    title: 'Senior Product Designer',
-    company: 'NEO TECH SOLUTIONS',
-    period: '2021 — PRESENT',
+    title: 'Software Engineering Intern - HERA',
+    company: 'ALKU UZEM',
+    period: '2025',
     description:
-      'I am responsible for the product strategy and design system management of global-scale B2B platforms. Leading the design team, I ensure the integration of user-centered methodologies.',
-    current: true,
-  },
-  {
-    title: 'Creative Lead',
-    company: 'STUDIO MINIMAL',
-    period: '2018 — 2021',
-    description:
-      'I undertook the management of creative processes in a boutique design agency. We achieved award-winning work in brand identity and web projects.',
+      ' Implemented core functionalities; and ensured seamless integration between the frontend interface and the backend database.',
     current: false,
   },
   {
-    title: 'UI Designer',
-    company: 'DIGITAL FLOW',
-    period: '2015 — 2018',
+    title: 'Lead Instructor, Co-Organizer- Git/Github Bootcamp',
+    company: 'NEXUS ALKU',
+    period: '2025 — 2026',
     description:
-      'I specialized in user interface design and interactive prototyping. This was the period where I entered the world of mobile applications.',
+      'Designed and delivered a comprehensive "Git/ GitHub Bootcamp" focused on real-world scenarios for engineering students at Rafet Kayis Faculty of Engineering.',
+    current: true,
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Teknofest Altira Rocket Team',
+    period: '2025 — 2026',
+    description:
+      'Contributing to technical documentation (Preliminary and Critical Design Reports) by detailing the software architecture, state machines, and fail-safe protocols.',
     current: false,
   },
 ]
@@ -41,7 +41,7 @@ export default function Experience() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
         <div className="md:col-span-4">
           <span className="font-label-caps text-label-caps text-secondary mb-base block">
-            JOURNEY
+            EXPERIENCE
           </span>
           <h2 className="font-headline-md text-headline-md text-primary sticky top-28">
             Career Journey

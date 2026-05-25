@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import hera1 from '../assets/hera/1000092736.JPG'
+import hera2 from '../assets/hera/1000092737.JPG'
+import hera3 from '../assets/hera/1000092756.JPG'
+import hera4 from '../assets/hera/1000092757.JPG'
+import hera5 from '../assets/hera/Ekran Resmi 2026-05-25 13.55.23.png'
+import hera6 from '../assets/hera/Ekran Resmi 2026-05-25 13.56.56.png'
 
 const IMG = {
   dashboard: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB00sloWiE6ROgvQe_LDLgyI2ptBB_HVARJkxIEe_2iJKreI8Swfa83pbGNovUUROlHHJPioX7ebRiH_NC0S6vy8Dt5Ms_SIVUOIqqkm1h2mPWgSz6tmqpAMnggH4XKbMgxnm0xGRcnZPF8CJOJblp9dTk_USuqc34jLNOD5KFHdx1CpT2Ie5AgSzP3fx8Y_ZQWNzq1oQzy9UiFBSrvmSk39ettjV5pEJuGoyH1DK11gopTlb0tF4XPSK9uQ6u8jKxeCzj-w4o482o',
@@ -10,30 +16,39 @@ const IMG = {
 
 const projects = [
   {
-    title: 'Aura Analytics',
-    description: 'Data-driven interface design for a B2B SaaS platform. Focused on clarity and actionable insights through minimal UI patterns.',
-    tag: 'UI/UX',
-    images: [IMG.dashboard, IMG.skincare, IMG.arch],
+    title: 'HERA',
+    description: 'Co-developed a full-stack standalone application for ALKÜ Tazelenme University to digitize and manage elderly students\' academic and health records. Implemented core functionalities including database architecture, UI/UX design, and seamless integration between frontend and backend systems. Presented the final product to the University Rector and Board of Directors.',
+    tag: 'Software Development',
+    tech: ['Python', 'PyQt6', 'Microsoft Access'],
+    github: null,
+    live: null,
+    images: [hera1, hera2, hera3, hera4, hera5, hera6],
   },
   {
-    title: 'Lumina Skincare',
-    description: 'Minimalist brand identity and e-commerce experience. Clean typography and soft tones to reflect the premium product positioning.',
-    tag: 'BRANDING',
+    title: 'Graduation Project : SignaTurk',
+    description: 'SignaTurk aims to eliminate communication barriers between hearing and hearing-impaired individuals by acting as an AI-powered, real-time, and bidirectional digital translator between Turkish Sign Language (TSL) and Turkish. The first module detects movement in front of the camera, prints it to the screen, and vocalizes it using text-to-speech. The second detects spoken words and plays animations drawn with Unreal Engine Metahuman technology. Involved in model training, evaluation, and analysis.',
+    tag: 'AI / ML',
+    tech: ['Python', 'TensorFlow', 'Unreal Engine','BiLSTM', 'MediaPipe'],
+    github: null,
+    live: 'https://example.com',
     images: [IMG.skincare, IMG.mobile],
   },
   {
-    title: 'Vertex Architecture',
-    description: 'Corporate web presence for a leading architecture firm. Grid-based layouts echoing their structural philosophy.',
+    title: 'Frontend Development Portfolio',
+    description: 'Developed a collection of responsive web applications including a Movie Tracking App and a Weather App, focusing on REST API integration and asynchronous data fetching.  Built a dynamic Restaurant Page and a Task Management (Todo) System, implementing DOM manipulation, local storage, and complex UI layouts using Tailwind CSS. Focused on writing semantic HTML and clean, modular JavaScript code following modern web standards and accessibility principles. Managed project versions and deployment workflows using Git/GitHub and Netlify/Vercel for continuous integration.',
     tag: 'WEB',
+    tech: ['React.js', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'],
+    github: 'https://github.com/serhatcamadan',
+    live: null,
     images: [IMG.arch, IMG.dashboard, IMG.mobile],
   },
-  {
-    title: 'Nova Pay',
-    description: 'Next-generation financial mobile application. Designed for speed and trust in everyday transactions.',
-    tag: 'MOBILE',
-    images: [IMG.mobile, IMG.arch],
-  },
 ]
+
+const GitHubIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+  </svg>
+)
 
 // ── Mini image carousel inside each card ─────────────────────────────────────
 function CardCarousel({ images, onCardClick }) {
@@ -207,12 +222,32 @@ function ProjectModal({ project, onClose }) {
 
         {/* Content */}
         <div className="p-8">
-          <div className="flex items-start justify-between gap-4 mb-3">
-            <h3 className="font-headline-md text-headline-md text-primary">{project.title}</h3>
-            <span className="font-label-caps text-label-caps px-3 py-1.5 bg-secondary-container/30 text-secondary rounded-lg shrink-0 mt-1">
-              {project.tag}
-            </span>
+          {/* Title + links */}
+          <div className="flex items-center gap-3 mb-3">
+            <h3 className="font-headline-md text-headline-md text-primary shrink-0">{project.title}</h3>
+            <div className="flex-1 h-px bg-outline-variant/40" />
+            <div className="flex items-center gap-3 shrink-0 text-on-surface-variant">
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer"
+                   className="hover:text-primary transition-colors">
+                  <GitHubIcon />
+                </a>
+              )}
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noopener noreferrer"
+                   className="hover:text-primary transition-colors">
+                  <span className="material-symbols-outlined text-[20px]">open_in_new</span>
+                </a>
+              )}
+            </div>
           </div>
+
+          {/* Tech stack */}
+          <p className="font-label-caps text-label-caps text-secondary mb-3">
+           {project.tech.join(' - ')}
+          </p>
+
+          {/* Description */}
           <p className="font-body-lg text-body-lg text-on-surface-variant">{project.description}</p>
         </div>
       </div>
@@ -259,18 +294,59 @@ export default function Projects() {
                   images={project.images}
                   onCardClick={() => setModal(project)}
                 />
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-headline-sm text-headline-sm text-primary mb-1">
+                <div className="mt-3">
+                  {/* Title + separator + links */}
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="font-headline-sm text-headline-sm text-primary shrink-0">
                       {project.title}
                     </h3>
-                    <p className="font-body-md text-body-md text-on-surface-variant line-clamp-2">
-                      {project.description}
-                    </p>
+                    <div className="flex-1 h-px bg-outline-variant/40" />
+                    <div className="flex items-center gap-2 shrink-0 text-on-surface-variant">
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="hover:text-primary transition-colors"
+                        >
+                          <GitHubIcon />
+                        </a>
+                      )}
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="hover:text-primary transition-colors"
+                        >
+                          <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <span className="font-label-caps text-label-caps px-3 py-1 bg-surface-variant rounded-lg shrink-0 ml-4">
-                    {project.tag}
-                  </span>
+
+                  {/* Tech stack */}
+                  <p className="font-label-caps text-label-caps text-secondary mb-2">
+                    {project.tech.join(' - ')}
+                  </p>
+
+                  {/* Description */}
+                  <p className="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-3">
+                    {project.description}
+                  </p>
+
+                  {/* Learn more */}
+                  <button
+                    onClick={() => setModal(project)}
+                    className="font-label-caps text-label-caps text-secondary flex items-center gap-1 group hover:gap-2 transition-all"
+                  >
+                    Learn more
+                    <span className="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">
+                      chevron_right
+                    </span>
+                  </button>
                 </div>
               </div>
             ))}
