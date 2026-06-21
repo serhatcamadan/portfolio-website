@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const jobs = [
@@ -10,14 +11,6 @@ const jobs = [
     current: false,
   },
   {
-    title: 'Lead Instructor, Co-Organizer- Git/Github Bootcamp',
-    company: 'NEXUS ALKU',
-    period: '2025 — 2026',
-    description:
-      'Designed and delivered a comprehensive "Git/ GitHub Bootcamp" focused on real-world scenarios for engineering students at Rafet Kayis Faculty of Engineering.',
-    current: true,
-  },
-  {
     title: 'Software Engineer',
     company: 'Teknofest Altira Rocket Team',
     period: '2025 — 2026',
@@ -25,10 +18,42 @@ const jobs = [
       'Contributing to technical documentation (Preliminary and Critical Design Reports) by detailing the software architecture, state machines, and fail-safe protocols.',
     current: false,
   },
+  {
+    title: 'Lead Instructor, Co-Organizer- Git/Github Bootcamp',
+    company: 'NEXUS ALKU',
+    period: '2025 — 2026',
+    description:
+      'Designed and delivered a comprehensive "Git/ GitHub Bootcamp" focused on real-world scenarios for engineering students at Rafet Kayis Faculty of Engineering.',
+    current: true,
+  },
 ]
 
 export default function Experience() {
   const { ref, visible } = useScrollReveal()
+  const timelineRef = useRef(null)
+  const dotRefs = useRef([])
+  const [fillHeight, setFillHeight] = useState(0)
+  const [activeDots, setActiveDots] = useState(jobs.map(() => false))
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!timelineRef.current) return
+      const rect = timelineRef.current.getBoundingClientRect()
+      const mark = window.innerHeight * 0.65
+      const filled = Math.min(rect.height, Math.max(0, mark - rect.top))
+      setFillHeight(filled)
+      setActiveDots(
+        dotRefs.current.map(el => {
+          if (!el) return false
+          const dotRect = el.getBoundingClientRect()
+          return dotRect.top + dotRect.height / 2 <= mark
+        })
+      )
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <section
@@ -49,15 +74,33 @@ export default function Experience() {
         </div>
 
         <div className="md:col-span-8">
-          <div className="relative pl-8 border-l border-outline-variant/50 space-y-stack-lg">
-            {jobs.map((job) => (
+          <div ref={timelineRef} className="relative pl-8 space-y-stack-lg">
+            {/* Background line */}
+            <div className="absolute left-0 top-0 bottom-0 w-px bg-outline-variant/50" />
+            {/* Fill line */}
+            <div
+              className="absolute left-0 top-0 w-px bg-primary"
+              style={{ height: `${fillHeight}px` }}
+            />
+
+            {jobs.map((job, i) => (
               <div key={job.title} className="relative">
                 {job.current ? (
-                  <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-primary ring-4 ring-secondary-fixed/30 flex items-center justify-center">
+                  <div
+                    ref={el => { dotRefs.current[i] = el }}
+                    className={`absolute -left-[41px] top-1 w-5 h-5 rounded-full ring-4 ring-secondary-fixed/30 flex items-center justify-center transition-colors duration-500 ${
+                      activeDots[i] ? 'bg-primary' : 'bg-outline-variant'
+                    }`}
+                  >
                     <div className="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse" />
                   </div>
                 ) : (
-                  <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-outline-variant" />
+                  <div
+                    ref={el => { dotRefs.current[i] = el }}
+                    className={`absolute -left-[41px] top-1 w-5 h-5 rounded-full transition-colors duration-500 ${
+                      activeDots[i] ? 'bg-primary' : 'bg-outline-variant'
+                    }`}
+                  />
                 )}
 
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">

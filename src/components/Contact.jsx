@@ -1,4 +1,11 @@
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+
+// ── EmailJS credentials ───────────────────────────────────────────────────────
+const EJS_SERVICE_ID  = 'service_sbwgnra'
+const EJS_TEMPLATE_ID = 'template_spf0j8w'
+const EJS_PUBLIC_KEY  = 'zje89DEd739dfHAEl'
 
 const LinkedInIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -24,6 +31,114 @@ const socials = [
   { label: 'INSTAGRAM', href: 'https://instagram.com/serhatcamadan',     Icon: InstagramIcon },
 ]
 
+// ── Contact form ──────────────────────────────────────────────────────────────
+function ContactForm() {
+  const formRef = useRef(null)
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setStatus('sending')
+
+    emailjs
+      .sendForm(EJS_SERVICE_ID, EJS_TEMPLATE_ID, formRef.current, { publicKey: EJS_PUBLIC_KEY })
+      .then(() => {
+        setStatus('success')
+        formRef.current.reset()
+      })
+      .catch((err) => {
+        console.error('EmailJS error — status:', err.status, '| text:', err.text)
+        setStatus('error')
+      })
+  }
+
+  const inputBase =
+    'w-full bg-surface-variant/20 border border-outline-variant/40 rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary transition-colors duration-200'
+
+  return (
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="font-label-caps text-label-caps text-secondary block mb-1.5">NAME</label>
+          <input
+            name="from_name"
+            type="text"
+            required
+            placeholder="Your name"
+            className={inputBase}
+          />
+        </div>
+        <div>
+          <label className="font-label-caps text-label-caps text-secondary block mb-1.5">EMAIL</label>
+          <input
+            name="from_email"
+            type="email"
+            required
+            placeholder="your@email.com"
+            className={inputBase}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label className="font-label-caps text-label-caps text-secondary block mb-1.5">SUBJECT</label>
+        <input
+          name="subject"
+          type="text"
+          required
+          placeholder="What's this about?"
+          className={inputBase}
+        />
+      </div>
+
+      <div>
+        <label className="font-label-caps text-label-caps text-secondary block mb-1.5">MESSAGE</label>
+        <textarea
+          name="message"
+          required
+          rows={5}
+          placeholder="What's on your mind?"
+          className={`${inputBase} resize-none`}
+        />
+      </div>
+
+      <div className="flex items-center gap-4">
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="flex items-center gap-2 font-label-caps text-label-caps px-6 py-3 rounded-lg bg-secondary text-on-secondary hover:opacity-90 disabled:opacity-50 transition-all duration-200"
+        >
+          {status === 'sending' ? (
+            <>
+              <span className="material-symbols-outlined text-[16px] animate-spin">progress_activity</span>
+              Sending…
+            </>
+          ) : (
+            <>
+              <span className="material-symbols-outlined text-[16px]">send</span>
+              Send Message
+            </>
+          )}
+        </button>
+
+        {status === 'success' && (
+          <span className="flex items-center gap-1.5 font-label-caps text-label-caps text-secondary">
+            <span className="material-symbols-outlined text-[16px]">check_circle</span>
+            Message sent!
+          </span>
+        )}
+        {status === 'error' && (
+          <span className="flex items-center gap-1.5 font-label-caps text-label-caps text-error">
+            <span className="material-symbols-outlined text-[16px]">error</span>
+            Something went wrong. Try again.
+          </span>
+        )}
+      </div>
+    </form>
+  )
+}
+
+// ── Section ───────────────────────────────────────────────────────────────────
 export default function Contact() {
   const { ref, visible } = useScrollReveal()
 
@@ -37,32 +152,25 @@ export default function Contact() {
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
 
-        {/* Left — label + heading */}
+        {/* Left — label + heading + contact info */}
         <div className="md:col-span-4">
           <span className="font-label-caps text-label-caps text-secondary mb-base block">
             CONTACT
           </span>
-          <h2 className="font-headline-md text-headline-md text-primary sticky top-28">
+          <h2 className="font-headline-md text-headline-md text-primary sticky top-28 mb-stack-lg">
             Get In Touch
           </h2>
-        </div>
-
-        {/* Right — contact details */}
-        <div className="md:col-span-8 flex flex-col gap-stack-lg">
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-            Do you have a project or just want to say hello? You can reach me anytime.
-          </p>
 
           <a
             href="mailto:serhatcamadan@gmail.com"
-            className="flex items-center gap-stack-sm group w-fit"
+            className="flex items-center gap-stack-sm group w-fit mb-stack-lg"
           >
-            <span className="w-12 h-12 rounded-full bg-surface-variant/30 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-              <span className="material-symbols-outlined text-secondary">mail</span>
+            <span className="w-10 h-10 rounded-full bg-surface-variant/30 flex items-center justify-center group-hover:bg-secondary/20 transition-colors shrink-0">
+              <span className="material-symbols-outlined text-secondary text-[18px]">mail</span>
             </span>
             <div>
-              <span className="font-label-caps text-label-caps text-secondary block mb-1">EMAIL</span>
-              <span className="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">
+              <span className="font-label-caps text-label-caps text-secondary block mb-0.5">EMAIL</span>
+              <span className="font-body-md text-body-md text-primary group-hover:text-secondary transition-colors">
                 serhatcamadan@gmail.com
               </span>
             </div>
@@ -72,14 +180,14 @@ export default function Contact() {
             <span className="font-label-caps text-label-caps text-secondary block mb-stack-sm">
               SOCIAL
             </span>
-            <div className="flex gap-stack-md">
+            <div className="flex flex-col gap-2">
               {socials.map(({ label, href, Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary border border-outline-variant/30 hover:border-primary/40 px-4 py-2 rounded-lg transition-all duration-300"
+                  className="flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary border border-outline-variant/30 hover:border-primary/40 px-4 py-2 rounded-lg transition-all duration-300 w-fit"
                 >
                   <Icon />
                   {label}
@@ -87,6 +195,14 @@ export default function Contact() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Right — form */}
+        <div className="md:col-span-7 md:col-start-6">
+          <p className="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">
+            Do you have a project or just want to say hello? Fill in the form and I'll get back to you.
+          </p>
+          <ContactForm />
         </div>
 
       </div>

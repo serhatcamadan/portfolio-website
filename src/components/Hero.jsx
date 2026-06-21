@@ -31,7 +31,7 @@ export default function Hero() {
 
         {/* Animated name & role */}
         <AnimatedTitle
-          className="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md text-primary mb-stack-md max-w-3xl mx-auto text-center"
+          className="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md text-primary mb-stack-md mx-auto text-center"
           style={{ animation: 'fadeInUp 1s ease-out 0.2s forwards', opacity: 0 }}
         />
 

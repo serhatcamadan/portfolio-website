@@ -48,7 +48,7 @@ export default function Navbar() {
       >
         <div className="max-w-container-max mx-auto px-gutter flex justify-between items-center h-20">
           <a className="font-headline-sm text-headline-sm font-bold text-primary" href="#">
-            Portfolio
+            
           </a>
 
           <div className="hidden md:flex items-center gap-stack-md">

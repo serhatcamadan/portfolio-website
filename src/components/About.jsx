@@ -1,6 +1,26 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import fotoSrc from '../assets/foto.jpeg'
 
+const DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
+
+const skills = [
+  { name: 'HTML',         icon: `${DEV}/html5/html5-original.svg` },
+  { name: 'CSS',          icon: `${DEV}/css3/css3-original.svg` },
+  { name: 'JavaScript',   icon: `${DEV}/javascript/javascript-original.svg` },
+  { name: 'TypeScript',   icon: `${DEV}/typescript/typescript-original.svg` },
+  { name: 'React.js',     icon: `${DEV}/react/react-original.svg` },
+  { name: 'Next.js',      icon: `${DEV}/nextjs/nextjs-original.svg` },
+  { name: 'TailwindCSS',  icon: `${DEV}/tailwindcss/tailwindcss-original.svg` },
+  { name: 'Python',       icon: `${DEV}/python/python-original.svg` },
+  { name: 'Flask',        icon: `${DEV}/flask/flask-original.svg` },
+  { name: 'TensorFlow',   icon: `${DEV}/tensorflow/tensorflow-original.svg` },
+  { name: 'Scikit-learn', icon: `${DEV}/scikitlearn/scikitlearn-original.svg` },
+  { name: 'OpenCV',       icon: `${DEV}/opencv/opencv-original.svg` },
+  { name: 'Git',          icon: `${DEV}/git/git-original.svg` },
+  { name: 'MySQL',        icon: `${DEV}/mysql/mysql-original.svg` },
+  { name: 'PostgreSQL',   icon: `${DEV}/postgresql/postgresql-original.svg` },
+]
+
 export default function About() {
   const { ref, visible } = useScrollReveal()
 
@@ -50,14 +70,13 @@ export default function About() {
               <span className="font-label-caps text-label-caps text-secondary block mb-2">
                 USE AT WORK
               </span>
-              <ul className="font-body-md text-body-md text-on-surface space-y-1">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React.js</li>
-                <li>Next.js</li>
-                <li>TypeScript</li>
-                <li>TailwindCSS</li>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-3 font-body-md text-body-md text-on-surface">
+                {skills.map(({ name, icon }) => (
+                  <li key={name} className="flex items-center gap-2">
+                    <img src={icon} alt={name} className="w-5 h-5 shrink-0" />
+                    {name}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

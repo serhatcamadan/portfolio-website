@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 
 const LINE1 = 'SERHAT CAMADAN'
-const LINE2 = 'JUNIOR FRONT-END DEVELOPER'
+const LINE2 = 'FRONT-END DEVELOPER'
 
 // Pre-compute render items with stable ref indices
 const buildItems = () => {
@@ -100,7 +100,7 @@ export default function AnimatedTitle({ className, style }) {
   }, [])
 
   return (
-    <h1 className={className} style={style}>
+    <h1 className={className} style={{ ...style, whiteSpace: 'nowrap' }}>
       {items.map((item, i) => {
         if (item.isSep) {
           return (

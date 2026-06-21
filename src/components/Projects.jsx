@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import hera1 from '../assets/hera/1000092736.JPG'
 import hera2 from '../assets/hera/1000092737.JPG'
@@ -6,12 +6,27 @@ import hera3 from '../assets/hera/1000092756.JPG'
 import hera4 from '../assets/hera/1000092757.JPG'
 import hera5 from '../assets/hera/Ekran Resmi 2026-05-25 13.55.23.png'
 import hera6 from '../assets/hera/Ekran Resmi 2026-05-25 13.56.56.png'
+import githubLogo from '../assets/GitHub-Logo.wine.svg'
+import signaturkRef from '../assets/Signaturk/reference.png'
+import signaturkVideo from '../assets/Signaturk/signaturk_demo.mov'
+import signaturkPdf from '../assets/Signaturk/SignaTurk Al-Powered Real-Time Bidirectional Translation Between Turkish Sign Language and Turkish.pdf'
 
-const IMG = {
-  dashboard: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB00sloWiE6ROgvQe_LDLgyI2ptBB_HVARJkxIEe_2iJKreI8Swfa83pbGNovUUROlHHJPioX7ebRiH_NC0S6vy8Dt5Ms_SIVUOIqqkm1h2mPWgSz6tmqpAMnggH4XKbMgxnm0xGRcnZPF8CJOJblp9dTk_USuqc34jLNOD5KFHdx1CpT2Ie5AgSzP3fx8Y_ZQWNzq1oQzy9UiFBSrvmSk39ettjV5pEJuGoyH1DK11gopTlb0tF4XPSK9uQ6u8jKxeCzj-w4o482o',
-  skincare:  'https://lh3.googleusercontent.com/aida-public/AB6AXuC8EbFsvN1v2nKFkNFxL5xF66UXiLRMePieuPrGiDbwpCJf2j17pSAxVTw8SKr2vMPxozXoF7iXTboZKwBsTf6Zkd4B_hRYYvDU4804zotKCv5-SpZDgCdB71mqS5UBLJp1w0JwhUn0GJOBHYscAjBDjy70Rf9LATFHM399j52lWF0hXHpgtU7aF47so4rLXBLBZ6iwVNPE8mfDUZ4LenvhwaTQ_dZR7_bz2XyzINQUmNHVtgRqvjCma4CuQF35aZQzgpqhu5iFypo',
-  arch:      'https://lh3.googleusercontent.com/aida-public/AB6AXuAU35V4CbR7iLN1vTlra6E3UmXBPfEyhzkjbgBsdmKq5m8YIB913_QJh9Gv7j5KzQzR6BSeKIfvBc9U2CylJWhFcdP6BKoGiTsXRASY6_XFC55mhPqSO7uUs177YWUtt_O3bgHfvdksk9Lb73IouoDw14DEPYrrHriaSTvbn6JOM1HgHK9_92SKXFyEoeLYK3j2RGyuTvjpeH4Ou90irZtkLIHrNFMhnCUVGBotAs-FIRCyrFqJfr8KybFJcInQMjhjkOU4MCu-3PQ',
-  mobile:    'https://lh3.googleusercontent.com/aida-public/AB6AXuAUd16MpKFKfw-g6R7u4-_RaFtlF6r9nUaCRBBzyMmmNOc0PGlCJ9h-o5Z439SwFn8IzXH0XXggLSikTZpZoGm3PxIZ_pBZZP4LVItuYiBdtGKfqJR3eJQxWx4hGtRVDSAO14PsZQwWRYqoGsElIpp_mMxqoTVOq_ys_hi-jyghubVnbTIktIzm7ScH0TDMwa3AihJqKkubvqEsH2kyKXo-WPv8fLkLBFjqbnTkWF5Hz-gNP92esjCcBbwrHoSeO8vezvSIacgC9_A',
+
+const DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
+const SI  = 'https://cdn.simpleicons.org'
+
+const techIcons = {
+  'Python':           `${DEV}/python/python-original.svg`,
+  'TensorFlow':       `${DEV}/tensorflow/tensorflow-original.svg`,
+  'PyQt6':            `${SI}/qt/41cd52`,
+  'Unreal Engine':    `${SI}/unrealengine/ffffff`,
+
+  'React.js':         `${DEV}/react/react-original.svg`,
+  'JavaScript':       `${DEV}/javascript/javascript-original.svg`,
+  'Tailwind CSS':     `${DEV}/tailwindcss/tailwindcss-original.svg`,
+  'HTML':             `${DEV}/html5/html5-original.svg`,
+  'CSS':              `${DEV}/css3/css3-original.svg`,
+  'TypeScript':       `${DEV}/typescript/typescript-original.svg`,
 }
 
 const projects = [
@@ -28,10 +43,12 @@ const projects = [
     title: 'Graduation Project : SignaTurk',
     description: 'SignaTurk aims to eliminate communication barriers between hearing and hearing-impaired individuals by acting as an AI-powered, real-time, and bidirectional digital translator between Turkish Sign Language (TSL) and Turkish. The first module detects movement in front of the camera, prints it to the screen, and vocalizes it using text-to-speech. The second detects spoken words and plays animations drawn with Unreal Engine Metahuman technology. Involved in model training, evaluation, and analysis.',
     tag: 'AI / ML',
-    tech: ['Python', 'TensorFlow', 'Unreal Engine','BiLSTM', 'MediaPipe'],
+    tech: ['Python', 'TensorFlow', 'Unreal Engine', 'BiLSTM', 'MediaPipe'],
     github: null,
-    live: 'https://example.com',
-    images: [IMG.skincare, IMG.mobile],
+    live: null,
+    pdf: signaturkPdf,
+    video: signaturkVideo,
+    images: [signaturkRef],
   },
   {
     title: 'Frontend Development Portfolio',
@@ -40,9 +57,22 @@ const projects = [
     tech: ['React.js', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'],
     github: 'https://github.com/serhatcamadan',
     live: null,
-    images: [IMG.arch, IMG.dashboard, IMG.mobile],
+    images: [githubLogo],
   },
 ]
+
+function TechList({ techs, className = '' }) {
+  return (
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1.5 ${className}`}>
+      {techs.map(t => (
+        <span key={t} className="flex items-center gap-1.5 font-label-caps text-label-caps text-secondary">
+          {techIcons[t] && <img src={techIcons[t]} alt="" className="w-4 h-4 shrink-0" />}
+          {t}
+        </span>
+      ))}
+    </div>
+  )
+}
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
@@ -51,7 +81,11 @@ const GitHubIcon = () => (
 )
 
 // ── Mini image carousel inside each card ─────────────────────────────────────
-function CardCarousel({ images, onCardClick }) {
+function CardCarousel({ images, video, onCardClick }) {
+  const media = [
+    ...(video ? [{ type: 'video', src: video }] : []),
+    ...images.map(src => ({ type: 'image', src })),
+  ]
   const [idx, setIdx] = useState(0)
   const [fading, setFading] = useState(false)
 
@@ -65,8 +99,23 @@ function CardCarousel({ images, onCardClick }) {
     }, 180)
   }
 
-  const prev = (e) => navigate(e, (idx - 1 + images.length) % images.length)
-  const next = (e) => navigate(e, (idx + 1) % images.length)
+  const prev = (e) => navigate(e, (idx - 1 + media.length) % media.length)
+  const next = (e) => navigate(e, (idx + 1) % media.length)
+  const current = media[idx]
+
+  const videoRef = useRef(null)
+  const [playing, setPlaying] = useState(false)
+
+  const handleVideoClick = (e) => {
+    e.stopPropagation()
+    if (!videoRef.current) return
+    if (playing) {
+      videoRef.current.pause()
+    } else {
+      videoRef.current.play()
+    }
+    setPlaying(p => !p)
+  }
 
   return (
     <div
@@ -76,17 +125,40 @@ function CardCarousel({ images, onCardClick }) {
       onClick={onCardClick}
       onKeyDown={(e) => e.key === 'Enter' && onCardClick()}
     >
-      {/* Image */}
-      <img
-        src={images[idx]}
-        alt=""
-        className={`w-full h-full object-cover transition-all duration-500 group-hover/card:scale-105 ${
-          fading ? 'opacity-0' : 'opacity-100'
-        }`}
-      />
+      {/* Media */}
+      {current.type === 'video' ? (
+        <div
+          className={`relative w-full h-full transition-all duration-500 group-hover/card:scale-105 ${fading ? 'opacity-0' : 'opacity-100'}`}
+          onClick={handleVideoClick}
+        >
+          <video
+            ref={videoRef}
+            src={current.src}
+            className="w-full h-full object-cover"
+            muted
+            loop
+            playsInline
+          />
+          {!playing && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white">
+                <span className="material-symbols-outlined text-[36px]">play_arrow</span>
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <img
+          src={current.src}
+          alt=""
+          className={`w-full h-full object-cover transition-all duration-500 group-hover/card:scale-105 ${
+            fading ? 'opacity-0' : 'opacity-100'
+          }`}
+        />
+      )}
 
-      {/* Arrows — only if multiple images */}
-      {images.length > 1 && (
+      {/* Arrows — only if multiple items */}
+      {media.length > 1 && (
         <>
           <button
             onClick={prev}
@@ -104,9 +176,9 @@ function CardCarousel({ images, onCardClick }) {
       )}
 
       {/* Dot indicators */}
-      {images.length > 1 && (
+      {media.length > 1 && (
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-          {images.map((_, i) => (
+          {media.map((_, i) => (
             <button
               key={i}
               onClick={(e) => navigate(e, i)}
@@ -233,6 +305,12 @@ function ProjectModal({ project, onClose }) {
                   <GitHubIcon />
                 </a>
               )}
+              {project.pdf && (
+                <a href={project.pdf} target="_blank" rel="noopener noreferrer"
+                   className="hover:text-primary transition-colors" title="View PDF">
+                  <span className="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                </a>
+              )}
               {project.live && (
                 <a href={project.live} target="_blank" rel="noopener noreferrer"
                    className="hover:text-primary transition-colors">
@@ -243,12 +321,43 @@ function ProjectModal({ project, onClose }) {
           </div>
 
           {/* Tech stack */}
-          <p className="font-label-caps text-label-caps text-secondary mb-3">
-           {project.tech.join(' - ')}
-          </p>
+          <TechList techs={project.tech} className="mb-3" />
 
           {/* Description */}
-          <p className="font-body-lg text-body-lg text-on-surface-variant">{project.description}</p>
+          <p className="font-body-lg text-body-lg text-on-surface-variant mb-6">{project.description}</p>
+
+          {/* Demo video */}
+          {project.video && (
+            <div className={project.pdf ? 'mb-6' : ''}>
+              <span className="font-label-caps text-label-caps text-secondary block mb-2">DEMO VIDEO</span>
+              <video
+                controls
+                className="w-full rounded-lg border border-outline-variant/20"
+                src={project.video}
+              />
+            </div>
+          )}
+
+          {/* PDF embed */}
+          {project.pdf && (
+            <div>
+              <span className="font-label-caps text-label-caps text-secondary block mb-2">PROJECT REPORT</span>
+              <div className="relative rounded-lg overflow-hidden border border-outline-variant/20 h-120">
+                <iframe
+                  src={project.pdf}
+                  className="w-full h-full"
+                  title="Project PDF"
+                />
+                <a
+                  href={project.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0"
+                  aria-label="Open PDF in new tab"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -292,6 +401,7 @@ export default function Projects() {
               >
                 <CardCarousel
                   images={project.images}
+                  video={project.video}
                   onCardClick={() => setModal(project)}
                 />
                 <div className="mt-3">
@@ -328,9 +438,7 @@ export default function Projects() {
                   </div>
 
                   {/* Tech stack */}
-                  <p className="font-label-caps text-label-caps text-secondary mb-2">
-                    {project.tech.join(' - ')}
-                  </p>
+                  <TechList techs={project.tech} className="mb-2" />
 
                   {/* Description */}
                   <p className="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-3">
