@@ -8,7 +8,7 @@ import hera5 from '../assets/hera/Ekran Resmi 2026-05-25 13.55.23.png'
 import hera6 from '../assets/hera/Ekran Resmi 2026-05-25 13.56.56.png'
 import githubLogo from '../assets/GitHub-Logo.wine.svg'
 import signaturkRef from '../assets/Signaturk/reference.png'
-import signaturkVideo from '../assets/Signaturk/signaturk_demo.mov'
+
 import signaturkPdf from '../assets/Signaturk/SignaTurk Al-Powered Real-Time Bidirectional Translation Between Turkish Sign Language and Turkish.pdf'
 
 
@@ -47,7 +47,7 @@ const projects = [
     github: null,
     live: null,
     pdf: signaturkPdf,
-    video: signaturkVideo,
+    videoEmbed: 'https://drive.google.com/file/d/1wGTj6tKoi_xns15EMFpg5A55Ib7-Izx0/preview',
     images: [signaturkRef],
   },
   {
@@ -81,9 +81,9 @@ const GitHubIcon = () => (
 )
 
 // ── Mini image carousel inside each card ─────────────────────────────────────
-function CardCarousel({ images, video, onCardClick }) {
+function CardCarousel({ images, videoEmbed, onCardClick }) {
   const media = [
-    ...(video ? [{ type: 'video', src: video }] : []),
+    ...(videoEmbed ? [{ type: 'embed', src: videoEmbed }] : []),
     ...images.map(src => ({ type: 'image', src })),
   ]
   const [idx, setIdx] = useState(0)
@@ -93,29 +93,12 @@ function CardCarousel({ images, video, onCardClick }) {
     e.stopPropagation()
     if (fading) return
     setFading(true)
-    setTimeout(() => {
-      setIdx(next)
-      setFading(false)
-    }, 180)
+    setTimeout(() => { setIdx(next); setFading(false) }, 180)
   }
 
   const prev = (e) => navigate(e, (idx - 1 + media.length) % media.length)
   const next = (e) => navigate(e, (idx + 1) % media.length)
   const current = media[idx]
-
-  const videoRef = useRef(null)
-  const [playing, setPlaying] = useState(false)
-
-  const handleVideoClick = (e) => {
-    e.stopPropagation()
-    if (!videoRef.current) return
-    if (playing) {
-      videoRef.current.pause()
-    } else {
-      videoRef.current.play()
-    }
-    setPlaying(p => !p)
-  }
 
   return (
     <div
@@ -126,26 +109,20 @@ function CardCarousel({ images, video, onCardClick }) {
       onKeyDown={(e) => e.key === 'Enter' && onCardClick()}
     >
       {/* Media */}
-      {current.type === 'video' ? (
-        <div
-          className={`relative w-full h-full transition-all duration-500 group-hover/card:scale-105 ${fading ? 'opacity-0' : 'opacity-100'}`}
-          onClick={handleVideoClick}
-        >
-          <video
-            ref={videoRef}
+      {current.type === 'embed' ? (
+        <div className={`relative w-full h-full transition-opacity duration-500 ${fading ? 'opacity-0' : 'opacity-100'}`}>
+          <iframe
             src={current.src}
-            className="w-full h-full object-cover"
-            muted
-            loop
-            playsInline
+            className="w-full h-full pointer-events-none"
+            allow="autoplay"
+            title="Demo video"
           />
-          {!playing && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white">
-                <span className="material-symbols-outlined text-[36px]">play_arrow</span>
-              </div>
+          {/* Overlay: tıklamayı karta yönlendirir, play ikonuyla ipucu verir */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover/card:bg-black/20 transition-colors">
+            <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-80 group-hover/card:opacity-100 transition-opacity">
+              <span className="material-symbols-outlined text-[36px]">play_arrow</span>
             </div>
-          )}
+          </div>
         </div>
       ) : (
         <img
@@ -326,15 +303,19 @@ function ProjectModal({ project, onClose }) {
           {/* Description */}
           <p className="font-body-lg text-body-lg text-on-surface-variant mb-6">{project.description}</p>
 
-          {/* Demo video */}
-          {project.video && (
+          {/* Demo video — Google Drive embed */}
+          {project.videoEmbed && (
             <div className={project.pdf ? 'mb-6' : ''}>
               <span className="font-label-caps text-label-caps text-secondary block mb-2">DEMO VIDEO</span>
-              <video
-                controls
-                className="w-full rounded-lg border border-outline-variant/20"
-                src={project.video}
-              />
+              <div className="relative w-full rounded-lg overflow-hidden border border-outline-variant/20" style={{ paddingTop: '56.25%' }}>
+                <iframe
+                  src={project.videoEmbed}
+                  className="absolute inset-0 w-full h-full"
+                  allow="autoplay"
+                  allowFullScreen
+                  title="Demo video"
+                />
+              </div>
             </div>
           )}
 
@@ -401,7 +382,7 @@ export default function Projects() {
               >
                 <CardCarousel
                   images={project.images}
-                  video={project.video}
+                  videoEmbed={project.videoEmbed}
                   onCardClick={() => setModal(project)}
                 />
                 <div className="mt-3">
