@@ -157,7 +157,7 @@ export default function Contact() {
           <span className="font-label-caps text-label-caps text-secondary mb-base block">
             CONTACT
           </span>
-          <h2 className="font-headline-md text-headline-md text-primary sticky top-28 mb-stack-lg">
+          <h2 className="font-headline-md text-headline-md text-primary sticky top-16 md:top-28 mb-stack-lg">
             Get In Touch
           </h2>
 

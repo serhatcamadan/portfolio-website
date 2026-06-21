@@ -270,10 +270,10 @@ function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 md:p-8">
           {/* Title + links */}
-          <div className="flex items-center gap-3 mb-3">
-            <h3 className="font-headline-md text-headline-md text-primary shrink-0">{project.title}</h3>
+          <div className="flex items-center gap-3 mb-3 flex-wrap">
+            <h3 className="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md text-primary">{project.title}</h3>
             <div className="flex-1 h-px bg-outline-variant/40" />
             <div className="flex items-center gap-3 shrink-0 text-on-surface-variant">
               {project.github && (
@@ -323,7 +323,7 @@ function ProjectModal({ project, onClose }) {
           {project.pdf && (
             <div>
               <span className="font-label-caps text-label-caps text-secondary block mb-2">PROJECT REPORT</span>
-              <div className="relative rounded-lg overflow-hidden border border-outline-variant/20 h-120">
+              <div className="relative rounded-lg overflow-hidden border border-outline-variant/20 h-64 md:h-120">
                 <iframe
                   src={project.pdf}
                   className="w-full h-full"

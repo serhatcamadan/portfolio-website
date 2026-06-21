@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
 
+const isFinePointer = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches
+
 export default function CustomCursor() {
   const dotRef    = useRef(null)
   const canvasRef = useRef(null)
@@ -55,6 +57,8 @@ export default function CustomCursor() {
       cancelAnimationFrame(raf.current)
     }
   }, [])
+
+  if (!isFinePointer) return null
 
   return (
     <>

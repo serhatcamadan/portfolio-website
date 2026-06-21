@@ -35,14 +35,14 @@ export default function About() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-stack-lg items-center">
         {/* Photo */}
         <div className="md:col-span-5 relative group">
-          <div className="aspect-[4/5] overflow-hidden border border-outline-variant/30 rounded-lg">
+          <div className="aspect-[3/4] sm:aspect-[4/5] overflow-hidden border border-outline-variant/30 rounded-lg">
             <img
               alt="portfolio-photo"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               src={fotoSrc}
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-container rounded-full -z-10 opacity-50 blur-2xl" />
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-container rounded-full -z-10 opacity-50 blur-2xl hidden sm:block" />
         </div>
 
         {/* Content */}
@@ -65,12 +65,12 @@ export default function About() {
             </p>
           </div>
 
-          <div className="mt-stack-lg grid grid-cols-2 gap-stack-md">
+          <div className="mt-stack-lg">
             <div>
               <span className="font-label-caps text-label-caps text-secondary block mb-2">
                 USE AT WORK
               </span>
-              <ul className="grid grid-cols-2 gap-x-6 gap-y-3 font-body-md text-body-md text-on-surface">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-3 font-body-md text-body-md text-on-surface">
                 {skills.map(({ name, icon }) => (
                   <li key={name} className="flex items-center gap-2">
                     <img src={icon} alt={name} className="w-5 h-5 shrink-0" />

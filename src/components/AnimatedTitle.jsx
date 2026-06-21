@@ -99,34 +99,31 @@ export default function AnimatedTitle({ className, style }) {
     }
   }, [])
 
+  const sepIdx = items.findIndex(it => it.isSep)
+  const line1  = items.slice(0, sepIdx)
+  const line2  = items.slice(sepIdx + 1)
+
+  const renderChar = (item, i) => {
+    if (item.isSpace) {
+      return <span key={`sp-${i}`} className="inline-block" style={{ width: '0.28em' }}>{' '}</span>
+    }
+    return (
+      <span
+        key={`${item.line}-${i}`}
+        ref={(el) => { letterRefs.current[item.refIdx] = el }}
+        className="inline-block"
+        style={{ willChange: 'transform, color' }}
+      >
+        {item.char}
+      </span>
+    )
+  }
+
   return (
-    <h1 className={className} style={{ ...style, whiteSpace: 'nowrap' }}>
-      {items.map((item, i) => {
-        if (item.isSep) {
-          return (
-            <span key={`sep-${i}`} className="text-secondary mx-3 md:mx-4 inline-block">
-              |
-            </span>
-          )
-        }
-        if (item.isSpace) {
-          return (
-            <span key={`sp-${i}`} className="inline-block" style={{ width: '0.28em' }}>
-              {' '}
-            </span>
-          )
-        }
-        return (
-          <span
-            key={`${item.line}-${i}`}
-            ref={(el) => { letterRefs.current[item.refIdx] = el }}
-            className="inline-block"
-            style={{ willChange: 'transform, color' }}
-          >
-            {item.char}
-          </span>
-        )
-      })}
+    <h1 className={className} style={style}>
+      <span className="whitespace-nowrap">{line1.map(renderChar)}</span>
+      <span className="text-secondary mx-2 md:mx-4 inline-block">|</span>
+      <span className="whitespace-nowrap">{line2.map(renderChar)}</span>
     </h1>
   )
 }

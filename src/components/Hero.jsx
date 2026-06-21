@@ -19,11 +19,11 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="min-h-screen flex items-center pt-20 px-gutter max-w-container-max mx-auto">
+    <section className="min-h-screen flex items-center pt-16 md:pt-20 px-gutter max-w-container-max mx-auto">
       <div className="w-full flex flex-col items-center text-center">
         {/* Greeting */}
         <span
-          className="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em] mb-stack-sm block"
+          className="font-label-caps text-label-caps text-secondary uppercase tracking-[0.1em] md:tracking-[0.2em] mb-stack-sm block"
           style={{ animation: 'fadeIn 0.8s ease-out forwards', opacity: 0 }}
         >
           hi there
@@ -37,7 +37,7 @@ export default function Hero() {
 
         {/* Cycling tech */}
         <div
-          className="flex items-center justify-center gap-3 mb-stack-lg"
+          className="flex flex-wrap items-center justify-center gap-2 mb-stack-lg"
           style={{ animation: 'fadeInUp 1s ease-out 0.4s forwards', opacity: 0 }}
         >
           <span className="font-body-lg text-body-lg text-on-surface-variant">
@@ -53,7 +53,7 @@ export default function Hero() {
 
         {/* CTA */}
         <div
-          className="flex gap-stack-sm"
+          className="flex flex-wrap justify-center gap-stack-sm"
           style={{ animation: 'fadeInUp 1s ease-out 0.6s forwards', opacity: 0 }}
         >
           <a

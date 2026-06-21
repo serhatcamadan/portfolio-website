@@ -68,13 +68,13 @@ export default function Experience() {
           <span className="font-label-caps text-label-caps text-secondary mb-base block">
             EXPERIENCE
           </span>
-          <h2 className="font-headline-md text-headline-md text-primary sticky top-28">
+          <h2 className="font-headline-md text-headline-md text-primary sticky top-16 md:top-28">
             Career Journey
           </h2>
         </div>
 
         <div className="md:col-span-8">
-          <div ref={timelineRef} className="relative pl-8 space-y-stack-lg">
+          <div ref={timelineRef} className="relative pl-6 md:pl-8 space-y-stack-lg">
             {/* Background line */}
             <div className="absolute left-0 top-0 bottom-0 w-px bg-outline-variant/50" />
             {/* Fill line */}
@@ -88,7 +88,7 @@ export default function Experience() {
                 {job.current ? (
                   <div
                     ref={el => { dotRefs.current[i] = el }}
-                    className={`absolute -left-[41px] top-1 w-5 h-5 rounded-full ring-4 ring-secondary-fixed/30 flex items-center justify-center transition-colors duration-500 ${
+                    className={`absolute -left-[33px] md:-left-[41px] top-1 w-5 h-5 rounded-full ring-4 ring-secondary-fixed/30 flex items-center justify-center transition-colors duration-500 ${
                       activeDots[i] ? 'bg-primary' : 'bg-outline-variant'
                     }`}
                   >
@@ -97,7 +97,7 @@ export default function Experience() {
                 ) : (
                   <div
                     ref={el => { dotRefs.current[i] = el }}
-                    className={`absolute -left-[41px] top-1 w-5 h-5 rounded-full transition-colors duration-500 ${
+                    className={`absolute -left-[33px] md:-left-[41px] top-1 w-5 h-5 rounded-full transition-colors duration-500 ${
                       activeDots[i] ? 'bg-primary' : 'bg-outline-variant'
                     }`}
                   />
