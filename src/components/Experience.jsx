@@ -3,11 +3,11 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const jobs = [
   {
-    title: 'Software Engineering Intern - HERA',
+    title: 'Software Engineering Intern — HERA',
     company: 'ALKU UZEM',
     period: '2025',
     description:
-      ' Implemented core functionalities; and ensured seamless integration between the frontend interface and the backend database.',
+      'Implemented core functionalities; and ensured seamless integration between the frontend interface and the backend database.',
     current: false,
   },
   {
@@ -19,11 +19,19 @@ const jobs = [
     current: false,
   },
   {
-    title: 'Lead Instructor, Co-Organizer- Git/Github Bootcamp',
+    title: 'Lead Instructor, Co-Organizer — Git/GitHub Bootcamp',
     company: 'NEXUS ALKU',
     period: '2025 — 2026',
     description:
-      'Designed and delivered a comprehensive "Git/ GitHub Bootcamp" focused on real-world scenarios for engineering students at Rafet Kayis Faculty of Engineering.',
+      'Designed and delivered a comprehensive "Git/GitHub Bootcamp" focused on real-world scenarios for engineering students at Rafet Kayis Faculty of Engineering.',
+    current: false,
+  },
+  {
+    title: 'Frontend Developer Intern',
+    company: 'Perapole',
+    period: '2026 — Present',
+    description:
+      'Contributed to a B2B web platform using React, Next.js, and TypeScript. Managed client-side state with Context API and Zustand. Built content automation pipelines with n8n for video and tutorial material delivery.',
     current: true,
   },
 ]

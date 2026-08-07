@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import cvPdf from '../assets/serhat-camadan-cv.pdf'
 
-const NAV_LINKS = ['About', 'Projects', 'Experience', 'Contact']
+const NAV_LINKS = [
+  { id: 'about',      label: 'About' },
+  { id: 'projects',   label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact',    label: 'Contact' },
+]
 
 export default function Navbar() {
   const [hidden, setHidden]     = useState(false)
@@ -12,7 +17,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      const current = window.pageYOffset
+      const current = window.scrollY
       if (current <= 0) { setHidden(false); setShadowed(false); lastScroll.current = current; return }
       if (current > lastScroll.current) { setHidden(true) } else { setHidden(false); setShadowed(true) }
       lastScroll.current = current
@@ -25,14 +30,13 @@ export default function Navbar() {
     if (!cvOpen) return
     const onKey = (e) => { if (e.key === 'Escape') setCvOpen(false) }
     document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+    return () => document.removeEventListener('keydown', onKey)
   }, [cvOpen])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    document.body.style.overflow = (cvOpen || menuOpen) ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [menuOpen])
+  }, [cvOpen, menuOpen])
 
   return (
     <>
@@ -42,17 +46,23 @@ export default function Navbar() {
         } ${shadowed ? 'shadow-sm' : ''}`}
       >
         <div className="max-w-container-max mx-auto px-gutter flex justify-between items-center h-16 md:h-20">
-          <a className="font-headline-sm text-headline-sm font-bold text-primary" href="#" />
+          <a
+            className="font-headline-sm text-headline-sm font-bold text-primary tracking-tight hover:text-secondary transition-colors"
+            href="#"
+            aria-label="Serhat Camadan — back to top"
+          >
+            SC
+          </a>
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-stack-md">
-            {NAV_LINKS.map(item => (
+            {NAV_LINKS.map(({ id, label }) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={id}
+                href={`#${id}`}
                 className="font-button text-button text-on-surface-variant hover:text-primary transition-colors"
               >
-                {item}
+                {label}
               </a>
             ))}
           </div>
@@ -91,14 +101,14 @@ export default function Navbar() {
             menuOpen ? 'translate-y-0' : '-translate-y-2'
           }`}
         >
-          {NAV_LINKS.map(item => (
+          {NAV_LINKS.map(({ id, label }) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={id}
+              href={`#${id}`}
               onClick={() => setMenuOpen(false)}
               className="flex items-center px-gutter py-4 font-button text-button text-on-surface-variant hover:text-primary hover:bg-surface-variant/20 border-b border-outline-variant/20 last:border-0 transition-colors"
             >
-              {item}
+              {label}
             </a>
           ))}
         </div>
@@ -123,7 +133,7 @@ export default function Navbar() {
                   className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1"
                 >
                   <span className="material-symbols-outlined text-base">download</span>
-                  İndir
+                  Download
                 </a>
                 <button onClick={() => setCvOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors">
                   <span className="material-symbols-outlined">close</span>

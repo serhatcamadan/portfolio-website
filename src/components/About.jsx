@@ -1,7 +1,9 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import fotoSrc from '../assets/foto.jpeg'
+import fotoSrc from '../assets/foto.webp'
 
 const DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
+
+const SI = 'https://cdn.simpleicons.org'
 
 const skills = [
   { name: 'HTML',         icon: `${DEV}/html5/html5-original.svg` },
@@ -11,13 +13,13 @@ const skills = [
   { name: 'React.js',     icon: `${DEV}/react/react-original.svg` },
   { name: 'Next.js',      icon: `${DEV}/nextjs/nextjs-original.svg` },
   { name: 'TailwindCSS',  icon: `${DEV}/tailwindcss/tailwindcss-original.svg` },
+  { name: 'Zustand',      icon: `${DEV}/zustand/zustand-original.svg` },
+  { name: 'shadcn/ui',    icon: `${SI}/shadcnui/ffffff` },
+  { name: 'Radix UI',     icon: `${SI}/radixui/ffffff` },
+  { name: 'Zod',          icon: `${SI}/zod/ffffff` },
   { name: 'Python',       icon: `${DEV}/python/python-original.svg` },
-  { name: 'Flask',        icon: `${DEV}/flask/flask-original.svg` },
   { name: 'TensorFlow',   icon: `${DEV}/tensorflow/tensorflow-original.svg` },
-  { name: 'Scikit-learn', icon: `${DEV}/scikitlearn/scikitlearn-original.svg` },
-  { name: 'OpenCV',       icon: `${DEV}/opencv/opencv-original.svg` },
   { name: 'Git',          icon: `${DEV}/git/git-original.svg` },
-  { name: 'MySQL',        icon: `${DEV}/mysql/mysql-original.svg` },
   { name: 'PostgreSQL',   icon: `${DEV}/postgresql/postgresql-original.svg` },
 ]
 
@@ -37,7 +39,10 @@ export default function About() {
         <div className="md:col-span-5 relative group">
           <div className="aspect-[3/4] sm:aspect-[4/5] overflow-hidden border border-outline-variant/30 rounded-lg">
             <img
-              alt="portfolio-photo"
+              alt="Serhat Camadan"
+              loading="lazy"
+              width={600}
+              height={750}
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               src={fotoSrc}
             />
@@ -48,20 +53,19 @@ export default function About() {
         {/* Content */}
         <div className="md:col-span-6 md:col-start-7">
           <h2 className="font-headline-md text-headline-md text-primary mb-stack-md">
-            About Me 
+            About Me
           </h2>
 
           <div className="space-y-stack-sm font-body-md text-body-md text-on-surface-variant">
             <p>
-              Hello, my name is Serhat, and I'm a 24 years old 
-              computer engineering student in my final year of university.
-              I have been developing my skills and working on projects in the 
-              field of front-end development for some time now.
+              I'm Serhat, a Frontend Developer and Computer Engineering graduate
+              from Alanya Alaaddin Keykubat University (June 2026). I build
+              modern, type-safe web applications with React, Next.js, and TypeScript.
             </p>
             <p>
-            Aside from front-end development, I previously developed SignaTurk, which is
-            a real-time bidirectional Turkish Sign Language recognition system, 
-            using image processing as my graduation project.
+              Alongside web development, I co-developed SignaTurk — a real-time
+              bidirectional Turkish Sign Language recognition system — using deep
+              learning and image processing as my graduation project.
             </p>
           </div>
 
@@ -73,7 +77,10 @@ export default function About() {
               <ul className="grid grid-cols-2 gap-x-4 gap-y-3 font-body-md text-body-md text-on-surface">
                 {skills.map(({ name, icon }) => (
                   <li key={name} className="flex items-center gap-2">
-                    <img src={icon} alt={name} className="w-5 h-5 shrink-0" />
+                    {icon
+                      ? <img src={icon} alt="" className="w-5 h-5 shrink-0" />
+                      : <span className="w-5 h-5 shrink-0 flex items-center justify-center text-secondary text-[10px]">◆</span>
+                    }
                     {name}
                   </li>
                 ))}

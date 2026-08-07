@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "about": "Hakkımda",
+    "projects": "Projeler",
+    "experience": "Deneyim",
+    "contact": "İletişim",
+    "viewCV": "CV Görüntüle",
+    "download": "İndir"
+  },
+  "hero": {
+    "greeting": "merhaba",
+    "buildsWith": "şunlarla geliştiriyorum",
+    "cta": "Projeleri Gör"
+  },
+  "about": {
+    "heading": "Hakkımda",
+    "bio1": "Frontend Developer ve Alanya Alaaddin Keykubat Üniversitesi Bilgisayar Mühendisliği mezunuyum (Haziran 2026). React, Next.js ve TypeScript ile modern, tip güvenli web uygulamaları geliştiriyorum.",
+    "bio2": "Web geliştirmenin yanı sıra, mezuniyet projesi olarak SignaTurk'ü birlikte geliştirdim — derin öğrenme ve görüntü işleme kullanarak gerçek zamanlı, çift yönlü bir Türk İşaret Dili tanıma sistemi.",
+    "skillsLabel": "KULLANDIKLARI"
+  },
+  "experience": {
+    "sectionLabel": "DENEYİM",
+    "heading": "Kariyer Yolculuğu",
+    "present": "Günümüz",
+    "jobs": {
+      "perapole": {
+        "title": "Frontend Geliştirici Stajyeri",
+        "description": "React, Next.js ve TypeScript kullanarak B2B web platformuna katkıda bulundum. Context API ve Zustand ile istemci tarafı durum yönetimini üstlendim. Video ve rehber içeriklerin iletimi için n8n ile içerik otomasyon süreçleri kurdum."
+      },
+      "alku": {
+        "title": "Yazılım Mühendisliği Stajyeri — HERA",
+        "description": "Temel işlevleri hayata geçirdim; ön uç arayüz ile arka uç veritabanı arasında kesintisiz entegrasyonu sağladım."
+      },
+      "teknofest": {
+        "title": "Yazılım Mühendisi",
+        "description": "Yazılım mimarisini, durum makinelerini ve arıza güvenlik protokollerini ayrıntılandırarak teknik dokümantasyona (Ön Tasarım ve Kritik Tasarım Raporları) katkı sağladım."
+      },
+      "nexus": {
+        "title": "Baş Eğitmen, Ortak Düzenleyici — Git/GitHub Bootcamp",
+        "description": "Rafet Kayış Mühendislik Fakültesi'ndeki mühendislik öğrencilerine yönelik gerçek dünya senaryolarına odaklanan kapsamlı bir \"Git/GitHub Bootcamp\" tasarlayıp sundum."
+      }
+    }
+  },
+  "projects": {
+    "sectionLabel": "SEÇİLMİŞ ÇALIŞMALAR",
+    "heading": "Projeler",
+    "dateRange": "2025 — bugün",
+    "learnMore": "Daha fazla",
+    "detailsHint": "detaylar",
+    "demoVideo": "DEMO VİDEO",
+    "projectReport": "PROJE RAPORU",
+    "items": {
+      "hera": {
+        "description": "ALKÜ Tazelenme Üniversitesi için yaşlı öğrencilerin akademik ve sağlık kayıtlarını dijitalleştirip yönetmek amacıyla tam yığın bağımsız bir uygulama birlikte geliştirdim. Veritabanı mimarisi, UI/UX tasarımı ve ön uç ile arka uç sistemler arasındaki entegrasyon dahil temel işlevleri hayata geçirdim. Nihai ürünü Üniversite Rektörü ve Yönetim Kurulu'na sundum."
+      },
+      "signaturk": {
+        "description": "SignaTurk, işiten ve işitme engelli bireyler arasındaki iletişim engellerini ortadan kaldırmayı amaçlayan yapay zeka destekli, gerçek zamanlı ve çift yönlü bir Türk İşaret Dili (TİD) — Türkçe dijital çevirmen uygulamasıdır. İlk modül kameradaki hareketi algılar, ekrana yazar ve metinden sese dönüştürür. İkincisi konuşulan kelimeleri algılar ve Unreal Engine Metahuman teknolojisiyle çizilmiş animasyonları oynatır. İşaret tanıma sürecini (MediaPipe landmark çıkarımı + BiLSTM sözcük düzeyi sınıflandırıcı) eğittim ve değerlendirdim; kamuya açık TİD kaynaklarıyla öz toplanan örnekleri birleştiren karma bir veri seti kullanarak CNN tabanlı (MobileNetV2, ince ayarlı) harf tanıma modelinde %99,4, BiLSTM sözcük düzeyi modelinde %92,1 doğruluk elde ettim."
+      },
+      "frontendPortfolio": {
+        "description": "REST API entegrasyonu ve asenkron veri çekmeye odaklanarak Film Takip Uygulaması ve Hava Durumu Uygulaması dahil duyarlı web uygulamalarından oluşan bir koleksiyon geliştirdim. DOM manipülasyonu, yerel depolama ve Tailwind CSS kullanarak karmaşık arayüz düzenleri uygulayarak dinamik bir Restoran Sayfası ve Görev Yönetimi (Yapılacaklar) Sistemi oluşturdum. Modern web standartlarına ve erişilebilirlik ilkelerine uygun anlamsal HTML ile temiz, modüler JavaScript yazmaya odaklandım. Sürekli entegrasyon için Git/GitHub ve Netlify/Vercel kullanarak proje versiyonlarını ve dağıtım iş akışlarını yönettim."
+      }
+    }
+  },
+  "contact": {
+    "sectionLabel": "İLETİŞİM",
+    "heading": "İletişime Geç",
+    "intro": "Bir projeniz mi var ya da sadece merhaba mı demek istiyorsunuz? Formu doldurun, en kısa sürede dönüş yapayım.",
+    "emailLabel": "E-POSTA",
+    "socialLabel": "SOSYAL MEDYA",
+    "form": {
+      "name": "İSİM",
+      "namePlaceholder": "Adınız",
+      "email": "E-POSTA",
+      "emailPlaceholder": "eposta@ornek.com",
+      "subject": "KONU",
+      "subjectPlaceholder": "Konu nedir?",
+      "message": "MESAJ",
+      "messagePlaceholder": "Ne düşünüyorsunuz?",
+      "send": "Mesaj Gönder",
+      "sending": "Gönderiliyor…",
+      "success": "Mesaj gönderildi!",
+      "error": "Bir hata oluştu. Tekrar deneyin."
+    }
+  }
+}

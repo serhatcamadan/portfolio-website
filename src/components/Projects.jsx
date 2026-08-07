@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import hera1 from '../assets/hera/1000092736.JPG'
-import hera2 from '../assets/hera/1000092737.JPG'
-import hera3 from '../assets/hera/1000092756.JPG'
-import hera4 from '../assets/hera/1000092757.JPG'
-import hera5 from '../assets/hera/Ekran Resmi 2026-05-25 13.55.23.png'
-import hera6 from '../assets/hera/Ekran Resmi 2026-05-25 13.56.56.png'
+import hera1 from '../assets/hera/1000092736.webp'
+import hera2 from '../assets/hera/1000092737.webp'
+import hera3 from '../assets/hera/1000092756.webp'
+import hera4 from '../assets/hera/1000092757.webp'
+import hera5 from '../assets/hera/Ekran Resmi 2026-05-25 13.55.23.webp'
+import hera6 from '../assets/hera/Ekran Resmi 2026-05-25 13.56.56.webp'
 import githubLogo from '../assets/GitHub-Logo.wine.svg'
-import signaturkRef from '../assets/Signaturk/reference.png'
+import signaturkRef from '../assets/Signaturk/reference.webp'
 
 import signaturkPdf from '../assets/Signaturk/SignaTurk Al-Powered Real-Time Bidirectional Translation Between Turkish Sign Language and Turkish.pdf'
 
@@ -27,12 +27,14 @@ const techIcons = {
   'HTML':             `${DEV}/html5/html5-original.svg`,
   'CSS':              `${DEV}/css3/css3-original.svg`,
   'TypeScript':       `${DEV}/typescript/typescript-original.svg`,
+  'Next.js':          `${DEV}/nextjs/nextjs-original.svg`,
+  'MediaPipe':        `${SI}/mediapipe/4285f4`,
 }
 
 const projects = [
   {
     title: 'HERA',
-    description: 'Co-developed a full-stack standalone application for ALKÜ Tazelenme University to digitize and manage elderly students\' academic and health records. Implemented core functionalities including database architecture, UI/UX design, and seamless integration between frontend and backend systems. Presented the final product to the University Rector and Board of Directors.',
+    description: "Co-developed a full-stack standalone application for ALKÜ Tazelenme University to digitize and manage elderly students' academic and health records. Implemented core functionalities including database architecture, UI/UX design, and seamless integration between frontend and backend systems. Presented the final product to the University Rector and Board of Directors.",
     tag: 'Software Development',
     tech: ['Python', 'PyQt6', 'Microsoft Access'],
     github: null,
@@ -41,7 +43,7 @@ const projects = [
   },
   {
     title: 'Graduation Project : SignaTurk',
-    description: 'SignaTurk aims to eliminate communication barriers between hearing and hearing-impaired individuals by acting as an AI-powered, real-time, and bidirectional digital translator between Turkish Sign Language (TSL) and Turkish. The first module detects movement in front of the camera, prints it to the screen, and vocalizes it using text-to-speech. The second detects spoken words and plays animations drawn with Unreal Engine Metahuman technology. Involved in model training, evaluation, and analysis.',
+    description: 'SignaTurk aims to eliminate communication barriers between hearing and hearing-impaired individuals by acting as an AI-powered, real-time, and bidirectional digital translator between Turkish Sign Language (TSL) and Turkish. The first module detects movement in front of the camera, prints it to the screen, and vocalizes it using text-to-speech. The second detects spoken words and plays animations drawn with Unreal Engine Metahuman technology. Trained and evaluated the gesture-recognition pipeline (MediaPipe landmark extraction + BiLSTM word-level classifier) on a hybrid dataset combining public TSL sources with self-collected samples — achieving 99.4% accuracy on the CNN-based (MobileNetV2, fine-tuned) letter-recognition model and 92.1% on the BiLSTM word-level model.',
     tag: 'AI / ML',
     tech: ['Python', 'TensorFlow', 'Unreal Engine', 'BiLSTM', 'MediaPipe'],
     github: null,
@@ -52,9 +54,9 @@ const projects = [
   },
   {
     title: 'Frontend Development Portfolio',
-    description: 'Developed a collection of responsive web applications including a Movie Tracking App and a Weather App, focusing on REST API integration and asynchronous data fetching.  Built a dynamic Restaurant Page and a Task Management (Todo) System, implementing DOM manipulation, local storage, and complex UI layouts using Tailwind CSS. Focused on writing semantic HTML and clean, modular JavaScript code following modern web standards and accessibility principles. Managed project versions and deployment workflows using Git/GitHub and Netlify/Vercel for continuous integration.',
+    description: 'Developed a collection of responsive web applications including a Movie Tracking App and a Weather App, focusing on REST API integration and asynchronous data fetching. Built a dynamic Restaurant Page and a Task Management (Todo) System, implementing DOM manipulation, local storage, and complex UI layouts using Tailwind CSS. Focused on writing semantic HTML and clean, modular JavaScript code following modern web standards and accessibility principles. Managed project versions and deployment workflows using Git/GitHub and Netlify/Vercel for continuous integration.',
     tag: 'WEB',
-    tech: ['React.js', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'],
+    tech: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/serhatcamadan',
     live: null,
     images: [githubLogo],
@@ -117,7 +119,6 @@ function CardCarousel({ images, videoEmbed, onCardClick }) {
             allow="autoplay"
             title="Demo video"
           />
-          {/* Overlay: tıklamayı karta yönlendirir, play ikonuyla ipucu verir */}
           <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover/card:bg-black/20 transition-colors">
             <div className="w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white opacity-80 group-hover/card:opacity-100 transition-opacity">
               <span className="material-symbols-outlined text-[36px]">play_arrow</span>
@@ -128,6 +129,9 @@ function CardCarousel({ images, videoEmbed, onCardClick }) {
         <img
           src={current.src}
           alt=""
+          loading="lazy"
+          width={800}
+          height={450}
           className={`w-full h-full object-cover transition-all duration-500 group-hover/card:scale-105 ${
             fading ? 'opacity-0' : 'opacity-100'
           }`}
@@ -230,6 +234,9 @@ function ProjectModal({ project, onClose }) {
           <img
             src={project.images[idx]}
             alt={project.title}
+            loading="lazy"
+            width={800}
+            height={450}
             className={`w-full h-full object-cover transition-opacity duration-200 ${fading ? 'opacity-0' : 'opacity-100'}`}
           />
 
@@ -345,6 +352,49 @@ function ProjectModal({ project, onClose }) {
   )
 }
 
+// ── Reusable project card content ─────────────────────────────────────────────
+function ProjectCardContent({ project, onLearnMore }) {
+  return (
+    <div>
+      <div className="flex items-center gap-3 mb-2">
+        <h3 className="font-headline-sm text-headline-sm text-primary shrink-0">
+          {project.title}
+        </h3>
+        <div className="flex-1 h-px bg-outline-variant/40" />
+        <div className="flex items-center gap-2 shrink-0 text-on-surface-variant">
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener noreferrer"
+               onClick={(e) => e.stopPropagation()}
+               className="hover:text-primary transition-colors">
+              <GitHubIcon />
+            </a>
+          )}
+          {project.live && (
+            <a href={project.live} target="_blank" rel="noopener noreferrer"
+               onClick={(e) => e.stopPropagation()}
+               className="hover:text-primary transition-colors">
+              <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+            </a>
+          )}
+        </div>
+      </div>
+      <TechList techs={project.tech} className="mb-2" />
+      <p className="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-3">
+        {project.description}
+      </p>
+      <button
+        onClick={onLearnMore}
+        className="font-label-caps text-label-caps text-secondary flex items-center gap-1 group hover:gap-2 transition-all"
+      >
+        Learn more
+        <span className="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">
+          chevron_right
+        </span>
+      </button>
+    </div>
+  )
+}
+
 // ── Main section ──────────────────────────────────────────────────────────────
 export default function Projects() {
   const { ref, visible } = useScrollReveal()
@@ -373,69 +423,16 @@ export default function Projects() {
             </span>
           </div>
 
-          {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter gap-y-stack-lg">
             {projects.map((project, i) => (
-              <div
-                key={project.title}
-                className={i % 2 === 1 ? 'md:mt-stack-lg' : ''}
-              >
+              <div key={project.title} className={i % 2 === 1 ? 'md:mt-stack-lg' : ''}>
                 <CardCarousel
                   images={project.images}
                   videoEmbed={project.videoEmbed}
                   onCardClick={() => setModal(project)}
                 />
                 <div className="mt-3">
-                  {/* Title + separator + links */}
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="font-headline-sm text-headline-sm text-primary shrink-0">
-                      {project.title}
-                    </h3>
-                    <div className="flex-1 h-px bg-outline-variant/40" />
-                    <div className="flex items-center gap-2 shrink-0 text-on-surface-variant">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="hover:text-primary transition-colors"
-                        >
-                          <GitHubIcon />
-                        </a>
-                      )}
-                      {project.live && (
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="hover:text-primary transition-colors"
-                        >
-                          <span className="material-symbols-outlined text-[18px]">open_in_new</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Tech stack */}
-                  <TechList techs={project.tech} className="mb-2" />
-
-                  {/* Description */}
-                  <p className="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-3">
-                    {project.description}
-                  </p>
-
-                  {/* Learn more */}
-                  <button
-                    onClick={() => setModal(project)}
-                    className="font-label-caps text-label-caps text-secondary flex items-center gap-1 group hover:gap-2 transition-all"
-                  >
-                    Learn more
-                    <span className="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">
-                      chevron_right
-                    </span>
-                  </button>
+                  <ProjectCardContent project={project} onLearnMore={() => setModal(project)} />
                 </div>
               </div>
             ))}

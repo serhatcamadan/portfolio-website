@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "viewCV": "View CV",
+    "download": "Download"
+  },
+  "hero": {
+    "greeting": "hi there",
+    "buildsWith": "I build things with",
+    "cta": "View Projects"
+  },
+  "about": {
+    "heading": "About Me",
+    "bio1": "I'm Serhat, a Frontend Developer and Computer Engineering graduate from Alanya Alaaddin Keykubat University (June 2026). I build modern, type-safe web applications with React, Next.js, and TypeScript.",
+    "bio2": "Alongside web development, I co-developed SignaTurk — a real-time bidirectional Turkish Sign Language recognition system — using deep learning and image processing as my graduation project.",
+    "skillsLabel": "USE AT WORK"
+  },
+  "experience": {
+    "sectionLabel": "EXPERIENCE",
+    "heading": "Career Journey",
+    "present": "Present",
+    "jobs": {
+      "perapole": {
+        "title": "Frontend Developer Intern",
+        "description": "Contributed to a B2B web platform using React, Next.js, and TypeScript. Managed client-side state with Context API and Zustand. Built content automation pipelines with n8n for video and tutorial material delivery."
+      },
+      "alku": {
+        "title": "Software Engineering Intern — HERA",
+        "description": "Implemented core functionalities; and ensured seamless integration between the frontend interface and the backend database."
+      },
+      "teknofest": {
+        "title": "Software Engineer",
+        "description": "Contributing to technical documentation (Preliminary and Critical Design Reports) by detailing the software architecture, state machines, and fail-safe protocols."
+      },
+      "nexus": {
+        "title": "Lead Instructor, Co-Organizer — Git/GitHub Bootcamp",
+        "description": "Designed and delivered a comprehensive \"Git/GitHub Bootcamp\" focused on real-world scenarios for engineering students at Rafet Kayis Faculty of Engineering."
+      }
+    }
+  },
+  "projects": {
+    "sectionLabel": "SELECTED WORKS",
+    "heading": "Projects",
+    "dateRange": "2025 — today",
+    "learnMore": "Learn more",
+    "detailsHint": "details",
+    "demoVideo": "DEMO VIDEO",
+    "projectReport": "PROJECT REPORT",
+    "items": {
+      "hera": {
+        "description": "Co-developed a full-stack standalone application for ALKÜ Tazelenme University to digitize and manage elderly students' academic and health records. Implemented core functionalities including database architecture, UI/UX design, and seamless integration between frontend and backend systems. Presented the final product to the University Rector and Board of Directors."
+      },
+      "signaturk": {
+        "description": "SignaTurk aims to eliminate communication barriers between hearing and hearing-impaired individuals by acting as an AI-powered, real-time, and bidirectional digital translator between Turkish Sign Language (TSL) and Turkish. The first module detects movement in front of the camera, prints it to the screen, and vocalizes it using text-to-speech. The second detects spoken words and plays animations drawn with Unreal Engine Metahuman technology. Trained and evaluated the gesture-recognition pipeline (MediaPipe landmark extraction + BiLSTM word-level classifier) on a hybrid dataset combining public TSL sources with self-collected samples — achieving 99.4% accuracy on the CNN-based (MobileNetV2, fine-tuned) letter-recognition model and 92.1% on the BiLSTM word-level model."
+      },
+      "frontendPortfolio": {
+        "description": "Developed a collection of responsive web applications including a Movie Tracking App and a Weather App, focusing on REST API integration and asynchronous data fetching. Built a dynamic Restaurant Page and a Task Management (Todo) System, implementing DOM manipulation, local storage, and complex UI layouts using Tailwind CSS. Focused on writing semantic HTML and clean, modular JavaScript code following modern web standards and accessibility principles. Managed project versions and deployment workflows using Git/GitHub and Netlify/Vercel for continuous integration."
+      }
+    }
+  },
+  "contact": {
+    "sectionLabel": "CONTACT",
+    "heading": "Get In Touch",
+    "intro": "Do you have a project or just want to say hello? Fill in the form and I'll get back to you.",
+    "emailLabel": "EMAIL",
+    "socialLabel": "SOCIAL",
+    "form": {
+      "name": "NAME",
+      "namePlaceholder": "Your name",
+      "email": "EMAIL",
+      "emailPlaceholder": "your@email.com",
+      "subject": "SUBJECT",
+      "subjectPlaceholder": "What's this about?",
+      "message": "MESSAGE",
+      "messagePlaceholder": "What's on your mind?",
+      "send": "Send Message",
+      "sending": "Sending…",
+      "success": "Message sent!",
+      "error": "Something went wrong. Try again."
+    }
+  }
+}
