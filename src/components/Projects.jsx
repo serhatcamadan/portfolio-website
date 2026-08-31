@@ -29,6 +29,12 @@ const techIcons = {
   'TypeScript':       `${DEV}/typescript/typescript-original.svg`,
   'Next.js':          `${DEV}/nextjs/nextjs-original.svg`,
   'MediaPipe':        `${SI}/mediapipe/4285f4`,
+  'NestJS':           `${DEV}/nestjs/nestjs-original.svg`,
+  'Supabase':         `${SI}/supabase/3ECF8F`,
+  'Prisma':           `${DEV}/prisma/prisma-original.svg`,
+  'PostgreSQL':       `${DEV}/postgresql/postgresql-original.svg`,
+  'shadcn/ui':        `${SI}/shadcnui/ffffff`,
+  'Railway':          `${SI}/railway/ffffff`,
 }
 
 const projects = [
@@ -51,6 +57,15 @@ const projects = [
     pdf: signaturkPdf,
     videoEmbed: 'https://drive.google.com/file/d/1wGTj6tKoi_xns15EMFpg5A55Ib7-Izx0/preview',
     images: [signaturkRef],
+  },
+  {
+    title: 'SupplyHub',
+    description: 'A full-stack B2B wholesale supply platform connecting suppliers with buyers (retailers, restaurants, and manufacturers). Features tiered pricing, RFQ negotiation workflows, and corporate approval flows for high-value orders. Built with Next.js App Router on the frontend and a NestJS REST API backend, with JWT-based authentication, role-based access control (seller / buyer admin / staff), and Supabase PostgreSQL as the database. Deployed on Vercel (frontend) and Railway (backend).',
+    tag: 'Full-Stack',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'NestJS', 'Prisma', 'Supabase', 'PostgreSQL'],
+    github: 'https://github.com/serhatcamadan/supplyhub',
+    live: 'https://supplyhub-ashen.vercel.app',
+    images: [githubLogo],
   },
   {
     title: 'Frontend Development Portfolio',
