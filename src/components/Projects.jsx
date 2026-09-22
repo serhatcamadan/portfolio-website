@@ -8,6 +8,11 @@ import hera5 from '../assets/hera/Ekran Resmi 2026-05-25 13.55.23.webp'
 import hera6 from '../assets/hera/Ekran Resmi 2026-05-25 13.56.56.webp'
 import githubLogo from '../assets/GitHub-Logo.wine.svg'
 import signaturkRef from '../assets/Signaturk/reference.webp'
+import supplyhub1 from '../assets/supplyhub/sup-1.webp'
+import supplyhub2 from '../assets/supplyhub/sup-2.webp'
+import supplyhub3 from '../assets/supplyhub/sup-3.webp'
+import supplyhub4 from '../assets/supplyhub/sup-4.webp'
+import supplyhub5 from '../assets/supplyhub/sup-5.webp'
 
 import signaturkPdf from '../assets/Signaturk/SignaTurk Al-Powered Real-Time Bidirectional Translation Between Turkish Sign Language and Turkish.pdf'
 
@@ -30,6 +35,7 @@ const techIcons = {
   'Next.js':          `${DEV}/nextjs/nextjs-original.svg`,
   'MediaPipe':        `${SI}/mediapipe/4285f4`,
   'NestJS':           `${DEV}/nestjs/nestjs-original.svg`,
+  'Socket.IO':        `${SI}/socketdotio/ffffff`,
   'Supabase':         `${SI}/supabase/3ECF8F`,
   'Prisma':           `${DEV}/prisma/prisma-original.svg`,
   'PostgreSQL':       `${DEV}/postgresql/postgresql-original.svg`,
@@ -60,12 +66,12 @@ const projects = [
   },
   {
     title: 'SupplyHub',
-    description: 'A full-stack B2B wholesale supply platform connecting suppliers with buyers (retailers, restaurants, and manufacturers). Features tiered pricing, RFQ negotiation workflows, and corporate approval flows for high-value orders. Built with Next.js App Router on the frontend and a NestJS REST API backend, with JWT-based authentication, role-based access control (seller / buyer admin / staff), and Supabase PostgreSQL as the database. Deployed on Vercel (frontend) and Railway (backend).',
+    description: 'A full-stack B2B wholesale supply platform connecting suppliers with buyers (retailers, restaurants, and manufacturers). Beyond fixed-price ordering, it models real B2B complexity: tiered volume pricing, RFQ negotiation workflows, and corporate spending-limit approval chains. Also features live ascending-price auctions — buyers bid in real time through a WebSocket gateway embedded directly in the NestJS backend, with concurrent bid conflicts resolved through an atomic conditional database update rather than an external lock, so two simultaneous bids can never both win. Secured with JWT authentication (access + refresh tokens), role-based access control (seller / buyer admin / staff), and hardened through a full security audit covering unauthorized file uploads, cross-tenant data exposure, and IDOR. Fully bilingual (Turkish/English) with locale-aware error handling throughout. Built with Next.js App Router on the frontend and a NestJS REST + WebSocket API on the backend, Prisma over Supabase PostgreSQL, tested with Vitest and Playwright, and deployed on Vercel (frontend) and Railway (backend).',
     tag: 'Full-Stack',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'NestJS', 'Prisma', 'Supabase', 'PostgreSQL'],
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'NestJS', 'Socket.IO', 'Prisma', 'Supabase', 'PostgreSQL'],
     github: 'https://github.com/serhatcamadan/supplyhub',
     live: 'https://supplyhub-ashen.vercel.app',
-    images: [githubLogo],
+    images: [supplyhub1, supplyhub2, supplyhub3, supplyhub4, supplyhub5],
   },
   {
     title: 'Frontend Development Portfolio',
