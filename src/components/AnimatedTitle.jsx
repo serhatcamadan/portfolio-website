@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 
 const LINE1 = 'SERHAT CAMADAN'
-const LINE2 = 'FRONT-END DEVELOPER'
+const LINE2 = 'AI ENGINEER | FRONTEND DEVELOPER'
 
 // Pre-compute render items with stable ref indices
 const buildItems = () => {

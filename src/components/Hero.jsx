@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import AnimatedTitle from './AnimatedTitle'
 
-const techs = ['JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind CSS', 'Zustand']
+const techs = ['JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind CSS', 'Zustand', 'Python','LangChain', 'RAG', 'Hugging Face']
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)

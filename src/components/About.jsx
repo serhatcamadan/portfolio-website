@@ -18,7 +18,12 @@ const skills = [
   { name: 'Radix UI',     icon: `${SI}/radixui/ffffff` },
   { name: 'Zod',          icon: `${SI}/zod/ffffff` },
   { name: 'Python',       icon: `${DEV}/python/python-original.svg` },
+  { name: 'PyTorch',      icon: `${DEV}/pytorch/pytorch-original.svg` },
   { name: 'TensorFlow',   icon: `${DEV}/tensorflow/tensorflow-original.svg` },
+  { name: 'Hugging Face', icon: `${DEV}/huggingface/huggingface-original.svg` },
+  { name: 'LangChain',    icon: `${SI}/langchain/ffffff` },
+  { name: 'RAG' },
+  { name: 'Gradio',       icon: `${SI}/gradio/ffffff` },
   { name: 'Git',          icon: `${DEV}/git/git-original.svg` },
   { name: 'PostgreSQL',   icon: `${DEV}/postgresql/postgresql-original.svg` },
 ]
@@ -58,14 +63,22 @@ export default function About() {
 
           <div className="space-y-stack-sm font-body-md text-body-md text-on-surface-variant">
             <p>
-              I'm Serhat, a Frontend Developer and Computer Engineering graduate
-              from Alanya Alaaddin Keykubat University (June 2026). I build
-              modern, type-safe web applications with React, Next.js, and TypeScript.
+              I'm Serhat, an AI Engineer and Frontend Developer, and a Computer
+              Engineering graduate from Alanya Alaaddin Keykubat University (June
+              2026). I build modern, type-safe web applications with React, Next.js,
+              and TypeScript, and design LLM-powered systems using RAG, fine-tuning,
+              and agentic workflows.
             </p>
             <p>
               Alongside web development, I co-developed SignaTurk — a real-time
               bidirectional Turkish Sign Language recognition system — using deep
               learning and image processing as my graduation project.
+            </p>
+            <p>
+              I also completed an intensive AI Engineering program covering LLM
+              engineering, RAG, transformer fine-tuning (LoRA/QLoRA), and
+              multi-agent systems — applying them across eight hands-on projects
+              with both frontier and open-source models.
             </p>
           </div>
 

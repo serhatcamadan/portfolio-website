@@ -15,6 +15,7 @@ import supplyhub4 from '../assets/supplyhub/sup-4.webp'
 import supplyhub5 from '../assets/supplyhub/sup-5.webp'
 
 import signaturkPdf from '../assets/Signaturk/SignaTurk Al-Powered Real-Time Bidirectional Translation Between Turkish Sign Language and Turkish.pdf'
+import aiEngineeringCover from '../assets/ai-engineering-cover.svg'
 
 
 const DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons'
@@ -41,9 +42,23 @@ const techIcons = {
   'PostgreSQL':       `${DEV}/postgresql/postgresql-original.svg`,
   'shadcn/ui':        `${SI}/shadcnui/ffffff`,
   'Railway':          `${SI}/railway/ffffff`,
+  'PyTorch':          `${DEV}/pytorch/pytorch-original.svg`,
+  'Hugging Face':     `${DEV}/huggingface/huggingface-original.svg`,
+  'LangChain':        `${SI}/langchain/ffffff`,
+  'Anthropic':        `${SI}/anthropic/ffffff`,
+  'Gradio':           `${SI}/gradio/ffffff`,
 }
 
 const projects = [
+  {
+    title: 'AI Engineer Core Track — LLM Engineering, RAG & Agents',
+    description: "Completed an 8-week AI Engineering program (LLM Engineering, RAG, QLoRA, Agents): built a brochure generator that intelligently scrapes and navigates company websites, a multi-modal airline customer-support agent with a UI and function-calling, an audio-to-meeting-minutes pipeline combining open- and closed-source models, and a Python-to-C++ transpiler boosting runtime up to 60,000x. Built a RAG-based knowledge-worker to answer questions across company documents using vector search. For the capstone, compared frontier models against a QLoRA-fine-tuned open-source model on product-price prediction, then built an autonomous multi-agent system that scans deals in real time and sends bargain alerts. Evaluated 10+ frontier and open-source LLMs to match the right model to each task.",
+    tag: 'AI / LLM Engineering',
+    tech: ['Python', 'OpenAI API', 'Anthropic', 'Hugging Face', 'LangChain', 'ChromaDB', 'Gradio', 'PyTorch'],
+    github: null,
+    live: null,
+    images: [aiEngineeringCover],
+  },
   {
     title: 'HERA',
     description: "Co-developed a full-stack standalone application for ALKÜ Tazelenme University to digitize and manage elderly students' academic and health records. Implemented core functionalities including database architecture, UI/UX design, and seamless integration between frontend and backend systems. Presented the final product to the University Rector and Board of Directors.",
