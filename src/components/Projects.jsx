@@ -13,6 +13,10 @@ import supplyhub2 from '../assets/supplyhub/sup-2.webp'
 import supplyhub3 from '../assets/supplyhub/sup-3.webp'
 import supplyhub4 from '../assets/supplyhub/sup-4.webp'
 import supplyhub5 from '../assets/supplyhub/sup-5.webp'
+import kalkanCover from '../assets/kalkan/Kalkan güvenlik ikonu.webp'
+import kalkan1 from '../assets/kalkan/kalkan1.webp'
+import kalkan2 from '../assets/kalkan/kalkan2.webp'
+import kalkan3 from '../assets/kalkan/kalkan3.webp'
 
 import signaturkPdf from '../assets/Signaturk/SignaTurk Al-Powered Real-Time Bidirectional Translation Between Turkish Sign Language and Turkish.pdf'
 import aiEngineeringCover from '../assets/ai-engineering-cover.svg'
@@ -47,6 +51,8 @@ const techIcons = {
   'LangChain':        `${SI}/langchain/ffffff`,
   'Anthropic':        `${SI}/anthropic/ffffff`,
   'Gradio':           `${SI}/gradio/ffffff`,
+  'FastAPI':          `${DEV}/fastapi/fastapi-original.svg`,
+  'Docker':           `${DEV}/docker/docker-original.svg`,
 }
 
 const projects = [
@@ -58,6 +64,15 @@ const projects = [
     github: null,
     live: null,
     images: [aiEngineeringCover],
+  },
+  {
+    title: 'Kalkan — Turkish Scam-Message Analyzer',
+    description: "A Turkish scam-message analyzer for SMS and WhatsApp text: returns a risk level, the likely scam type, evidence quoted verbatim from the message, and a recommended action — and never says a message is \"safe.\" Evidence can't be hallucinated: a verification gate checks that every quoted span actually appears in the original text before it reaches the user. Risk itself is decided by a deterministic policy layer, not the model — a rule-based system sets the type and baseline risk, and a fine-tuned 0.8B Qwen3.5 model (MLX LoRA, exported to GGUF, served locally through llama.cpp with JSON-schema-constrained output) may only raise risk from low to medium under strict evidence conditions, never lower it. Benchmarked on a 297-message golden set against TF-IDF, zero-shot models, and gpt-5.4-mini, the layered local system matches gpt-5.4-mini's macro-F1 (0.905) while running entirely on-device for $0, with zero leakage on a blind, hand-written prompt-injection/jailbreak set. Hardened with PII masking (IBAN, card, ID, OTP codes) before the model ever sees the text, text-free HMAC-salted audit logging, per-IP rate limiting, and a fail-closed design if the model backend is unreachable. Shipped via Docker Compose (llama.cpp + FastAPI + Caddy/HTTPS) on a 4-vCPU VPS.",
+    tag: 'AI / LLM Engineering',
+    tech: ['Python', 'FastAPI', 'Hugging Face', 'Docker'],
+    github: 'https://github.com/serhatcamadan/kalkan',
+    live: 'https://kalkan-serhat.duckdns.org',
+    images: [kalkanCover, kalkan1, kalkan2, kalkan3],
   },
   {
     title: 'HERA',
